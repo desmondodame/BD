@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .floating {
+            animation: float 2s infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes slideInLeft {
+          from {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        .slide-in-left {
+            animation: slideInLeft 0.5s ease-out;
+          }
+        @keyframes slideInRight {
+          from {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        .slide-in-right {
+            animation: slideInRight 0.5s ease-out;
+          }
+        @keyframes zoomIn {
+          from {
+            transform: scale(0);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        .zoom-in {
+            animation: zoomIn 0.3s ease-out;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes typeWriter {
+          from {
+            width: 0;
+          }
+          to {
+            width: 100%;
+          }
+        }
+        .typewriter {
+          overflow: hidden;
+          border-right: .15em solid orange;
+          white-space: nowrap;
+          margin: 0 auto;
+          letter-spacing: .15em;
+          animation:
+            typeWriter 4s steps(40, end);
+        }
+        .heart {
+            width: 16px;
+            height: 16px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 29.639"><path d="M29.161 9.515c1.85-1.656 2.828-3.651 2.828-5.659 0-4.946-4.106-8.963-9.13-8.963-2.513 0-4.877 1.028-6.528 2.718C7.665-1.106 5.301-2.134 2.788-2.134A8.959 8.959 0 0 0 0 6.856c0 2.007.977 4.003 2.827 5.659l13.006 11.66c.16.143.346.215.533.215.187 0 .375-.072.534-.215l13.005-11.66z" fill="%23f48fb1"/></svg>');
+            background-size: cover;
+            display: inline-block;
+            margin: 0 2px;
+            animation: float 1.5s infinite;
+        }
+        .star {
+            width: 16px;
+            height: 16px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M15.094 1.579l-4.124 8.473-9.181.667 6.656 6.479-1.589 9.155 8.04-4.24 8.04 4.24-1.588-9.155 6.656-6.479-9.18-.667-4.124-8.473z" fill="%23ffdb58"/></svg>');
+            background-size: cover;
+            display: inline-block;
+            margin: 0 2px;
+            animation: float 1.2s infinite;
+        }
+        .sparkle {
+            width: 16px;
+            height: 16px;
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 17.27l-5.658 3.375.601-6.601-4.899-4.753 6.612-.532 2.454-6.107 2.454 6.107 6.612.532-4.899 4.753.601 6.601z" fill="%23b0f4e3"/></svg>');
+            background-size: cover;
+            display: inline-block;
+            margin: 0 2px;
+            animation: float 1s infinite;
+        }
+        .petal {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #f48fb1;
+            opacity: 0.8;
+            position: absolute;
+            animation: petalFall 4s linear infinite;
+        }
+        @keyframes petalFall {
+            0% {
+                top: -10px;
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.6;
+            }
+            80% {
+                opacity: 0.5;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'blush': '#f87171',
+                        'lavender': '#d8b4fe',
+                        'light-blue': '#93c5fd',
+                        'lemon': '#fef08a',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-lavender to-light-blue min-h-screen flex flex-col overflow-x-hidden">
+    <audio id="background-music" loop autoplay>
+        <source src="happy_birthday_slow.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="absolute top-4 right-4 z-10">
+        <button id="mute-button" class="bg-white/50 backdrop-blur-md rounded-full p-2 hover:bg-white/70 transition duration-300">
+            <svg id="mute-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-gray-700">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M23.73 9.75a10.01 10.01 0 0 0-9.26-9.25"></path><path d="M21 15a17 17 0 0 0-12.73-10.25"></path>
+            </svg>
+        </button>
+    </div>
+
+    <section id="welcome-page" class="flex flex-col items-center justify-center flex-grow text-center p-4">
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-semibold text-blush mb-4 fade-in">Happy Birthday, Nancy!</h1>
+        <div class="flex justify-center mb-6">
+            <span class="heart floating"></span>
+            <span class="star floating"></span>
+            <span class="sparkle floating"></span>
+            <span class="heart floating"></span>
+            <span class="star floating"></span>
+        </div>
+        <div class="w-full max-w-md mb-8">
+            <img src="60f45c80ac523d22b4c769eb438bd486.jpg" alt="Flork Birthday" class="rounded-full shadow-lg border-4 border-white/50 mx-auto floating"  loading="lazy">
+            </div>
+        <p class="text-lg sm:text-xl text-gray-700 fade-in">Wishing you the happiest of birthdays!</p>
+         <button id="surprise-button" class="mt-8 bg-blush hover:bg-rose-500 text-white font-semibold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105 shadow-md">
+            Tap here for a surprise!
+        </button>
+    </section>
+
+    <section id="things-i-love" class="container mx-auto py-12 px-4 hidden">
+        <h2 class="text-3xl sm:text-4xl font-semibold text-center text-blush mb-8">Top 10 Things I Love About You</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-left">
+                <p class="text-md sm:text-lg text-gray-700">1. Your strength. 💪 You're the strongest person I know.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-right">
+                <p class="text-md sm:text-lg text-gray-700">2. Your caring heart. ❤️ You've always been there for me.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-left">
+                <p class="text-md sm:text-lg text-gray-700">3. Your wisdom. ✨ You always give the best advice.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-right">
+                <p class="text-md sm:text-lg text-gray-700">4. Your support. 🌟 You always believe in me.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-left">
+                <p class="text-md sm:text-lg text-gray-700">5. Your friendship. 💖 I'm so grateful to have you in my life.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-right">
+                <p class="text-md sm:text-lg text-gray-700">6. Your laughter. 😄 It's contagious and joyful.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-left">
+                <p class="text-md sm:text-lg text-gray-700">7. Your positivity. ☀️ You always see the good in everything.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-right">
+                <p class="text-md sm:text-lg text-gray-700">8. Your selflessness. 🙏 You always put others first.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-left">
+                <p class="text-md sm:text-lg text-gray-700">9.  Your resilience. 🌸 You overcome every obstacle with grace.</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300 transform hover:scale-in-right">
+                <p class="text-md sm:text-lg text-gray-700">10. Your love. 💕 You're like a mom to me. </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="superpowers" class="bg-gradient-to-br from-light-blue to-lavender py-12 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-center text-blush mb-8">Her Secret Superpowers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 transform hover:scale-105 zoom-in">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/sparkles.svg" alt="Sparkles" class="h-10 w-10 text-yellow-400 spin">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Super Strength</h3>
+                    <p class="text-md text-gray-600">Able to handle any challenge with grace and power.</p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 transform hover:scale-105 zoom-in">
+                    <div class="flex justify-center mb-4">
+                         <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/heart.svg" alt="Heart" class="h-10 w-10 text-red-400 spin">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Super Empathy</h3>
+                    <p class="text-md text-gray-600">Understands and feels others' emotions deeply.</p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 transform hover:scale-105 zoom-in">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/zap.svg" alt="Zap" class="h-10 w-10 text-purple-400 spin">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Super Wisdom</h3>
+                    <p class="text-md text-gray-600">Possesses incredible insight and knowledge.</p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 transform hover:scale-105 zoom-in">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shield.svg" alt="Shield" class="h-10 w-10 text-blue-400 spin">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Guiding Light</h3>
+                    <p class="text-md text-gray-600">Guides, protects, and inspires like a true leader.</p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 transform hover:scale-105 zoom-in">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/smile.svg" alt="Smile" class="h-10 w-10 text-green-400 spin">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Super Loving</h3>
+                    <p class="text-md text-gray-600">The most loving and amazing person. </p>
+                </div>
+                <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300 transform hover:scale-105 zoom-in">
+                    <div class="flex justify-center mb-4">
+                        <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/award.svg" alt="Award" class="h-10 w-10 text-yellow-500 spin">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Best Pineapple</h3>
+                    <p class="text-md text-gray-600">  An inside joke. 😂 If you know, you know. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="birthday-note" class="container mx-auto py-12 px-4 text-center hidden relative">
+        <h2 class="text-3xl sm:text-4xl font-semibold text-center text-blush mb-8">A Personal Birthday Note</h2>
+        <div class="bg-white/80 backdrop-blur-md rounded-lg shadow-md p-6 w-full max-w-2xl mx-auto relative">
+            <div id="petals-container" class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="petal" style="left: 10%; animation-duration: 6s;"></div>
+                <div class="petal" style="left: 30%; animation-duration: 5s; animation-delay: 1s;"></div>
+                <div class="petal" style="left: 50%; animation-duration: 7s; animation-delay: 2s;"></div>
+                <div class="petal" style="left: 70%; animation-duration: 4s; animation-delay: 0.5s;"></div>
+                <div class="petal" style="left: 90%; animation-duration: 5s; animation-delay: 1.5s;"></div>
+            </div>
+            <p class="text-lg sm:text-xl text-gray-700 ">
+                Happy Birthday, Queen! 🎉
+                <br><br>
+                Today, I celebrate a woman whose presence in my life has been nothing short of a blessing. You’re not just a friend — you’re a force. A woman of rare strength, with a heart so pure and a love so genuine, it humbles me. You’ve held me up in moments I didn’t even realize I was falling. You’ve guided me like a mother, protected me like a sister, and inspired me like a leader.
+                <br><br>
+                You remind me of Deborah in the Bible — wise, brave, unshakable. A woman of immense value, destined to lead, to build, to influence. I know in my heart that one day, you'll lead not just with words, but with purpose and impact. You're already doing it — in the way you live, the way you love, and the way you never give up.
+                <br><br>
+                Thank you for all you’ve done for me — for your kindness, your sacrifices, your unwavering faith in who I am and who I can become. I will never forget it. I can never forget you. Because someone like you doesn’t just pass through a life — you transform it.
+                <br><br>
+                So today, I hope you feel deeply celebrated. You deserve all the joy, peace, and blessings life has to offer. I love you endlessly, and I thank God every day for you.
+                <br><br>
+                Happy Birthday, my hero. 💐
+            </p>
+        </div>
+    </section>
+
+    <script>
+        const muteButton = document.getElementById('mute-button');
+        const muteIcon = document.getElementById('mute-icon');
+        const backgroundMusic = document.getElementById('background-music');
+        const surpriseButton = document.getElementById('surprise-button');
+        const welcomePage = document.getElementById('welcome-page');
+        const thingsILoveSection = document.getElementById('things-i-love');
+        const superpowersSection = document.getElementById('superpowers');
+        const birthdayNoteSection = document.getElementById('birthday-note');
+
+        let isMuted = false;
+
+        muteButton.addEventListener('click', () => {
+            isMuted = !isMuted;
+            backgroundMusic.muted = isMuted;
+
+            if (isMuted) {
+                muteIcon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M12 19a9.54 9.54 0 0 0 2.49-4.79"></path><path d="M17.73 15.25a10 10 0 0 0-9.26-9.25"></path>`;
+            } else {
+                muteIcon.innerHTML = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M23.73 9.75a10.01 10.01 0 0 0-9.26-9.25"></path><path d="M21 15a17 17 0 0 0-12.73-10.25"></path>`;
+            }
+        });
+
+        surpriseButton.addEventListener('click', () => {
+            welcomePage.classList.add('hidden');
+            thingsILoveSection.classList.remove('hidden');
+            superpowersSection.classList.remove('hidden');
+            birthdayNoteSection.classList.remove('hidden');
+            thingsILoveSection.classList.add('fade-in');
+            superpowersSection.classList.add('fade-in');
+            birthdayNoteSection.classList.add('fade-in');
+
+        });
+    </script>
+</body>
+</html>
